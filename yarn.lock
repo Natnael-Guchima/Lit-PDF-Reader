@@ -5531,6 +5531,11 @@
     "base-64" "0.1.0"
     "glob" "^7.2.3"
 
+"react-native-clean-project@^4.0.1":
+  "integrity" "sha512-B7rXdFC4bfA+Vv7lZ9bKS6cUDgqg04OR5D69sNnhheFBJQ1V04cIfJ1Fu0sbqRsIehqlOcySQRpp8tm7r7PvLQ=="
+  "resolved" "https://registry.npmjs.org/react-native-clean-project/-/react-native-clean-project-4.0.1.tgz"
+  "version" "4.0.1"
+
 "react-native-pdf@^6.7.1":
   "integrity" "sha512-zszQygtNBYoUfEtP/fV7zhzGeohDlUksh2p3OzshLrxdY9mw7Tm5VXAxYq4d8HsomRJUbFlJ7rHaTU9AQL800g=="
   "resolved" "https://registry.npmjs.org/react-native-pdf/-/react-native-pdf-6.7.1.tgz"
