@@ -1,14 +1,9 @@
 import React from 'react';
 import {Text, View, StyleSheet, SafeAreaView} from 'react-native';
+import PDFExample from './PDFExample';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <View>
-        <Text>App</Text>
-      </View>
-    </SafeAreaView>
-  );
+  return <PDFExample />;
 };
 
 const styles = StyleSheet.create({
