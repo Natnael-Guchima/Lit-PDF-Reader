@@ -4,7 +4,11 @@ import PDFExample from './PDFExample';
 import Icontest from './Testfiles/Icontest';
 
 const App = () => {
-  return <Icontest />;
+  return (
+    <SafeAreaView>
+      <Icontest />
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
