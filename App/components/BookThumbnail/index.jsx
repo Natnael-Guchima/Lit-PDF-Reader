@@ -1,8 +1,29 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {StyleSheet} from 'react-native';
 
+import Pdf from 'react-native-pdf';
+
+const mockURI =
+  'https://cdn.ttgtmedia.com/rms/pdf/pragmatic_programmer_ch4.pdf';
+const source = {uri: mockURI, cache: true};
 function BookThumbnail(props) {
-  return <Text>book thum</Text>;
+  return (
+    <Pdf
+      source={source}
+      style={styles.pdf}
+      trustAllCerts={false}
+      singlePage={true}
+      onError={error => {
+        console.log(error);
+      }}
+    />
+  );
 }
 
+const styles = StyleSheet.create({
+  pdf: {
+    width: 300,
+    height: 300,
+  },
+});
 export default BookThumbnail;
