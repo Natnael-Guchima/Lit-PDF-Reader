@@ -9,6 +9,9 @@ const source = {uri: mockURI, cache: true};
 function BookThumbnail(props) {
   return (
     <Pdf
+      onLoadComplete={(numberOfPages, path, size, tableOfConentes) =>
+        console.log(numberOfPages, [path, size, tableOfConentes])
+      }
       source={source}
       style={styles.pdf}
       trustAllCerts={false}
