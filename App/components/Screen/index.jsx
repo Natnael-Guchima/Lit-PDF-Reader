@@ -3,9 +3,14 @@ import {SafeAreaView} from 'react-native';
 import {StyleSheet} from 'react-native';
 
 import colors from '../../config/colors';
+import NavigationBar from '../NavigationBar';
 
 function Screen({props}) {
-  return <SafeAreaView style={styles.screen}></SafeAreaView>;
+  return (
+    <SafeAreaView style={styles.screen}>
+      <NavigationBar />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
