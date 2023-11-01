@@ -9,7 +9,7 @@ function NavigationBar(props) {
   return (
     <View style={styles.container}>
       <MenuIon color={colors.white} size={20} name="menu" />
-      <HeaderText>My books</HeaderText>
+      <HeaderText style={styles.headerText}>My books</HeaderText>
     </View>
   );
 }
@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 40,
     paddingHorizontal: 10,
+    columnGap: 10,
+  },
+  headerText: {
+    flex: 1,
   },
 });
 
