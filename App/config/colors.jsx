@@ -3,3 +3,5 @@ const colors = {
   gray: '#eeeeee',
   white: '#ffffff',
 };
+
+export default colors;
