@@ -1,9 +1,17 @@
 import React from 'react';
-import PDFExample from './PDFExample';
-import BookThumbnail from './App/components/BookThumbnail';
+import {StyleSheet} from 'react-native';
+
+import Screen from './App/components/Screen';
 
 const App = () => {
-  return <BookThumbnail />;
+  return <Screen style={styles.screen} />;
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: 'blue',
+  },
+});
 
 export default App;
