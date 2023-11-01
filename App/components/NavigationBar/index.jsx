@@ -2,9 +2,14 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import colors from '../../config/colors';
+import MenuIon from '../MenuIcon';
 
 function NavigationBar(props) {
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <MenuIon color={colors.white} size={20} name="menu" />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
