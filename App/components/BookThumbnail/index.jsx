@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     height: 300,
     backgroundColor: colors.white,
   },
-  container: {width: '50%'},
+  container: {width: '50%', borderRadius: 10, overflow: 'hidden'},
 });
 export default BookThumbnail;
