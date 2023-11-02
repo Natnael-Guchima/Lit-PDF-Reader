@@ -4,11 +4,13 @@ import {StyleSheet} from 'react-native';
 
 import colors from '../../config/colors';
 import NavigationBar from '../NavigationBar';
+import BookThumbnail from '../BookThumbnail';
 
 function Screen({props}) {
   return (
     <SafeAreaView style={styles.screen}>
       <NavigationBar />
+      <BookThumbnail />
     </SafeAreaView>
   );
 }
