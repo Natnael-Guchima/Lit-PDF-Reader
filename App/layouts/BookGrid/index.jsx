@@ -15,6 +15,8 @@ function BookGrid(props) {
       <FlatList
         data={books}
         renderItem={({item}) => <BookThumbnail uri={item.uri} />}
+        numColumns={2}
+        horizontal={false}
       />
     </View>
   );
