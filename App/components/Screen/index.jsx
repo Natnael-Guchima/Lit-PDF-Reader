@@ -7,13 +7,8 @@ import NavigationBar from '../NavigationBar';
 import BookThumbnail from '../BookThumbnail';
 import BookGrid from '../../layouts/BookGrid';
 
-function Screen({props}) {
-  return (
-    <SafeAreaView style={styles.screen}>
-      <NavigationBar />
-      <BookGrid />
-    </SafeAreaView>
-  );
+function Screen({children}) {
+  return <SafeAreaView style={styles.screen}>{children}</SafeAreaView>;
 }
 
 const styles = StyleSheet.create({

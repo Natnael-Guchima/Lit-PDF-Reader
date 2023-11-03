@@ -7,7 +7,6 @@ import BookGrid from '../../layouts/BookGrid';
 function HomePage(props) {
   return (
     <Screen>
-      <NavigationBar />
       <BookGrid />
     </Screen>
   );
