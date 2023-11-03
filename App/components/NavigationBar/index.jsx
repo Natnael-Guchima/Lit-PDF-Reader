@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.primary,
     flexDirection: 'row',
-    height: 40,
+    height: 60,
     paddingHorizontal: 10,
     columnGap: 10,
   },
