@@ -15,7 +15,7 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomePage}
-          // options={{header: () => <NavigationBar />}}
+          options={{header: () => <NavigationBar />}}
         />
         <Stack.Screen name="PdfReader" component={PDFReader} />
       </Stack.Navigator>
