@@ -10,7 +10,8 @@ const mockURI =
 function BookThumbnail({uri, navigation}) {
   const source = {uri: uri ? uri : mockURI, cache: true};
   return (
-    <TouchableWithoutFeedback onPress={() => navigation.navigate('PdfReader')}>
+    <TouchableWithoutFeedback
+      onPress={() => navigation.navigate('PdfReader', {uri})}>
       <View style={styles.container}>
         <Pdf
           onLoadComplete={(numberOfPages, path, size, tableOfConentes) =>
