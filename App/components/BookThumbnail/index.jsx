@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 
 import Pdf from 'react-native-pdf';
 import colors from '../../config/colors';
@@ -7,23 +7,25 @@ import colors from '../../config/colors';
 const mockURI =
   'https://cdn.ttgtmedia.com/rms/pdf/pragmatic_programmer_ch4.pdf';
 
-function BookThumbnail({uri}) {
+function BookThumbnail({uri, navigation}) {
   const source = {uri: uri ? uri : mockURI, cache: true};
   return (
-    <View style={styles.container}>
-      <Pdf
-        onLoadComplete={(numberOfPages, path, size, tableOfConentes) =>
-          console.log(numberOfPages, path, size, tableOfConentes, 'info')
-        }
-        source={source}
-        style={styles.pdf}
-        trustAllCerts={false}
-        singlePage={true}
-        onError={error => {
-          console.log(error);
-        }}
-      />
-    </View>
+    <TouchableWithoutFeedback onPress={() => navigation.navigate('PdfReader')}>
+      <View style={styles.container}>
+        <Pdf
+          onLoadComplete={(numberOfPages, path, size, tableOfConentes) =>
+            console.log(numberOfPages, path, size, tableOfConentes, 'info')
+          }
+          source={source}
+          style={styles.pdf}
+          trustAllCerts={false}
+          singlePage={true}
+          onError={error => {
+            console.log(error);
+          }}
+        />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

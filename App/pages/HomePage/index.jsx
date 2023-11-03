@@ -4,10 +4,10 @@ import Screen from '../../components/Screen';
 import NavigationBar from '../../components/NavigationBar';
 import BookGrid from '../../layouts/BookGrid';
 
-function HomePage(props) {
+function HomePage({navigation}) {
   return (
     <Screen>
-      <BookGrid />
+      <BookGrid navigation={navigation} />
     </Screen>
   );
 }
