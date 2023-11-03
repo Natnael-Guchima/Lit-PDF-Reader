@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Screen from '../../components/Screen';
-import NavigationBar from '../../components/NavigationBar';
 import BookGrid from '../../layouts/BookGrid';
+import BookThumbnail from '../../components/BookThumbnail';
 
 function HomePage({navigation}) {
   return (
     <Screen>
-      <BookGrid navigation={navigation} />
+      <BookGrid navigation={navigation} RenderItem={BookThumbnail} />
     </Screen>
   );
 }
