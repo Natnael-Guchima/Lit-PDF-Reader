@@ -6,18 +6,22 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomePage from './App/pages/HomePage';
 import PDFReader from './App/pages/PDFReader';
 import NavigationBar from './App/components/NavigationBar';
+import {CONST} from './App/config/CONST';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName={CONST.ROUTES.HOME_PAGE}>
         <Stack.Screen
-          name="Home"
+          name={CONST.ROUTES.HOME_PAGE}
           component={HomePage}
           options={{header: () => <NavigationBar />}}
         />
-        <Stack.Screen name="PdfReader" component={PDFReader} />
+        <Stack.Screen
+          name={CONST.ROUTES.PDF_READER_PAGE}
+          component={PDFReader}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
