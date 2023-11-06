@@ -17,7 +17,7 @@ function PDFReader({route, navigation}) {
     navigation.setOptions({
       headerShown: isHeaderShown,
       headerRight: () => (
-        <MenuIon name="menu" size={25} color={colors.primary} />
+        <MenuIon name="table-of-contents" size={25} color={colors.primary} />
       ),
     });
   }, [isHeaderShown]);
