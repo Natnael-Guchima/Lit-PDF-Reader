@@ -5674,7 +5674,7 @@
   "resolved" "https://registry.npmjs.org/react-native-clean-project/-/react-native-clean-project-4.0.1.tgz"
   "version" "4.0.1"
 
-"react-native-gesture-handler@>= 1.0.0":
+"react-native-gesture-handler@^2.13.4", "react-native-gesture-handler@>= 1.0.0":
   "integrity" "sha512-smpYOVbvWABpq2H+lmDnfOLCTH934aUPO1w2/pQXvm1j+M/vmGQmvgRDJOpXcks17HLtNNKXD6tcODf3aPqDfA=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.13.4.tgz"
   "version" "2.13.4"

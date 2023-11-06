@@ -2,9 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import Pdf from 'react-native-pdf';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import MenuIon from '../../components/MenuIcon';
 import colors from '../../config/colors';
+
+const Drawer = createDrawerNavigator();
 
 function PDFReader({route, navigation}) {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
