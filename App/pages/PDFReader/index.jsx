@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import Pdf from 'react-native-pdf';
@@ -7,8 +7,11 @@ function PDFReader({route, navigation}) {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const toggleHeader = () => {
     setIsHeaderShown(isHeaderShown => !isHeaderShown);
-    navigation.setOptions({headerShown: isHeaderShown});
   };
+
+  useEffect(() => {
+    navigation.setOptions({headerShown: isHeaderShown});
+  }, [isHeaderShown]);
 
   const uri = route.params.uri;
   const source = {uri: uri, cache: true};
@@ -17,7 +20,9 @@ function PDFReader({route, navigation}) {
     <View>
       <Pdf
         source={source}
-        onLoadComplete={(numberOfPages, filePath) => {}}
+        onLoadComplete={(numberOfPages, filePath, style, tableOfContents) => {
+          // console.log(tableOfContents);
+        }}
         onError={error => console.log(error)}
         onPageSingleTap={toggleHeader}
         style={styles.pdf}
