@@ -1,16 +1,25 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import Pdf from 'react-native-pdf';
 
+import MenuIon from '../../components/MenuIcon';
+import colors from '../../config/colors';
+
 function PDFReader({route, navigation}) {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
+
   const toggleHeader = () => {
     setIsHeaderShown(isHeaderShown => !isHeaderShown);
   };
 
   useEffect(() => {
-    navigation.setOptions({headerShown: isHeaderShown});
+    navigation.setOptions({
+      headerShown: isHeaderShown,
+      headerRight: () => (
+        <MenuIon name="menu" size={25} color={colors.primary} />
+      ),
+    });
   }, [isHeaderShown]);
 
   const uri = route.params.uri;
