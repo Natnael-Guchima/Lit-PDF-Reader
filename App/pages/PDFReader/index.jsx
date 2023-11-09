@@ -19,13 +19,15 @@ function PDFReader({route, navigation}) {
   useEffect(() => {
     navigation.setOptions({
       headerShown: isHeaderShown,
-      headerRight: () => (
-        <MenuIon name="table-of-contents" size={25} color={colors.primary} />
-      ),
+      // headerRight: () => (
+      //   <MenuIon name="table-of-contents" size={25} color={colors.primary} />
+      // ),
     });
   }, [isHeaderShown]);
 
-  const uri = route.params.uri;
+  const uri = route.params
+    ? route.params.uri
+    : 'https://cdn.ttgtmedia.com/rms/pdf/pragmatic_programmer_ch4.pdf';
   const source = {uri: uri, cache: true};
 
   return (

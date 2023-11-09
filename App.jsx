@@ -7,6 +7,7 @@ import HomePage from './App/pages/HomePage';
 import PDFReader from './App/pages/PDFReader';
 import NavigationBar from './App/components/NavigationBar';
 import {CONST} from './App/config/CONST';
+import PDFReaderRoute from './App/routes/PDFReaderRoute';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
         />
         <Stack.Screen
           name={CONST.ROUTES.PDF_READER_PAGE}
-          component={PDFReader}
+          component={PDFReaderRoute}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
