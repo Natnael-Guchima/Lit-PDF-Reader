@@ -3,11 +3,12 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import PDFReader from '../../pages/PDFReader';
 import DrawerHeader from '../../components/DrawerHeader';
+import TableOfContents from '../../components/TableOfContents';
 
 const Drawer = createDrawerNavigator();
 function PDFReaderRoute(props) {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator drawerContent={() => <TableOfContents />}>
       <Drawer.Screen
         name="pdf"
         component={PDFReader}

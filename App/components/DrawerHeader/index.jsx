@@ -10,6 +10,10 @@ function DrawerHeader({navigation}) {
     navigation.goBack();
   };
 
+  const onTableOfContentsPress = () => {
+    navigation.openDrawer();
+  };
+
   return (
     <View style={styles.container}>
       <MenuIon
@@ -19,7 +23,12 @@ function DrawerHeader({navigation}) {
         onPress={onBackPress}
       />
       <HeaderText style={styles.headerText}>pdf reader title</HeaderText>
-      <MenuIon name="table-of-contents" size={25} color={colors.white} />
+      <MenuIon
+        name="table-of-contents"
+        size={25}
+        color={colors.white}
+        onPress={onTableOfContentsPress}
+      />
     </View>
   );
 }
