@@ -3,9 +3,9 @@ import {TouchableWithoutFeedback} from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-function MenuIon({...otherProps}) {
+function MenuIon({onPress, ...otherProps}) {
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={onPress}>
       <MaterialCommunityIcons {...otherProps} />
     </TouchableWithoutFeedback>
   );
