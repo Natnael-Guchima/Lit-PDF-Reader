@@ -2,6 +2,7 @@ import React from 'react';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import PDFReader from '../../pages/PDFReader';
+import DrawerHeader from '../../components/DrawerHeader';
 
 const Drawer = createDrawerNavigator();
 function PDFReaderRoute(props) {
@@ -10,7 +11,7 @@ function PDFReaderRoute(props) {
       <Drawer.Screen
         name="pdf"
         component={PDFReader}
-        options={{drawerPosition: 'right'}}
+        options={{drawerPosition: 'right', header: () => <DrawerHeader />}}
       />
     </Drawer.Navigator>
   );
