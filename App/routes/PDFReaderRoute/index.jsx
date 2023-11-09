@@ -11,7 +11,10 @@ function PDFReaderRoute(props) {
       <Drawer.Screen
         name="pdf"
         component={PDFReader}
-        options={{drawerPosition: 'right', header: () => <DrawerHeader />}}
+        options={{
+          drawerPosition: 'right',
+          header: ({navigation}) => <DrawerHeader navigation={navigation} />,
+        }}
       />
     </Drawer.Navigator>
   );

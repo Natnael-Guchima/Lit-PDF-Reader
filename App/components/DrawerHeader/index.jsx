@@ -5,12 +5,21 @@ import colors from '../../config/colors';
 import MenuIon from '../MenuIcon';
 import HeaderText from '../HeaderText';
 
-function DrawerHeader(props) {
+function DrawerHeader({navigation}) {
+  const onBackPress = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
-      <MenuIon name="arrow-left" size={20} color={colors.white} />
+      <MenuIon
+        name="arrow-left"
+        size={25}
+        color={colors.white}
+        onPress={onBackPress}
+      />
       <HeaderText style={styles.headerText}>pdf reader title</HeaderText>
-      <MenuIon name="table-of-contents" size={20} color={colors.white} />
+      <MenuIon name="table-of-contents" size={25} color={colors.white} />
     </View>
   );
 }
