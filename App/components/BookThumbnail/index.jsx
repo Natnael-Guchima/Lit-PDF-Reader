@@ -14,9 +14,7 @@ function BookThumbnail({uri, navigation}) {
       onPress={() => navigation.navigate('PdfReader', {uri})}>
       <View style={styles.container}>
         <Pdf
-          onLoadComplete={(numberOfPages, path, size, tableOfConentes) =>
-            console.log(numberOfPages, path, size, tableOfConentes, 'info')
-          }
+          onLoadComplete={(numberOfPages, path, size, tableOfConentes) => {}}
           source={source}
           style={styles.pdf}
           trustAllCerts={false}
