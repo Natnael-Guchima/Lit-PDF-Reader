@@ -6,7 +6,6 @@ import HeaderText from '../HeaderText';
 import colors from '../../config/colors';
 
 function TableOfContents({tableOfContents, ...props}) {
-  console.log(tableOfContents, 'from table of contents page');
   return (
     <DrawerContentScrollView {...props}>
       <HeaderText style={{color: colors.black, marginLeft: 10}}>

@@ -1,10 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 
+import {useSelector} from 'react-redux';
+
 import Pdf from 'react-native-pdf';
+import {getPageNumber} from '../../services/slices/pdfSlice';
 
 function PDFReader({route, navigation}) {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
+  const pageNumber = useSelector(getPageNumber);
+  console.log(pageNumber, 'pageNumber test');
 
   const toggleHeader = () => {
     setIsHeaderShown(isHeaderShown => !isHeaderShown);

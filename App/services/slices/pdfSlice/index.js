@@ -12,6 +12,8 @@ const pdfSlice = createSlice({
   },
 });
 
+export const getPageNumber = state => state.pdfSlice.pageNumber;
+
 export const {updatePageNumber} = pdfSlice.actions;
 
-export default pdfSlice.reducers;
+export default pdfSlice.reducer;
