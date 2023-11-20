@@ -7,7 +7,6 @@ import TableOfContents from '../../components/TableOfContents';
 
 const Drawer = createDrawerNavigator();
 function PDFReaderRoute({route}) {
-  console.log(route.params.tableOfContents);
   return (
     <Drawer.Navigator
       initialRouteName="pdf"
