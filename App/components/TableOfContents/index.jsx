@@ -5,7 +5,7 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import HeaderText from '../HeaderText';
 import colors from '../../config/colors';
 
-function TableOfContents({tableOfContents, ...props}) {
+function TableOfContents({tableOfContents, navigation, ...props}) {
   return (
     <DrawerContentScrollView {...props}>
       <HeaderText style={{color: colors.black, marginLeft: 10}}>
@@ -15,7 +15,9 @@ function TableOfContents({tableOfContents, ...props}) {
         <DrawerItem
           key={`${pageIdx}${title}`}
           label={title}
-          onPress={() => {}}
+          onPress={() => {
+            navigation.closeDrawer();
+          }}
         />
       ))}
       <DrawerItem label={'teest'} onPress={() => console.log('link pressed')} />

@@ -10,8 +10,11 @@ function PDFReaderRoute({route}) {
   return (
     <Drawer.Navigator
       initialRouteName="pdf"
-      drawerContent={() => (
-        <TableOfContents tableOfContents={route.params.tableOfContents} />
+      drawerContent={({navigation}) => (
+        <TableOfContents
+          navigation={navigation}
+          tableOfContents={route.params.tableOfContents}
+        />
       )}>
       <Drawer.Screen
         name="pdf"
