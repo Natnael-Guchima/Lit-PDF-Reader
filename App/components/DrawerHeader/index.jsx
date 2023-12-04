@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, StatusBar, SafeAreaView} from 'react-native';
 
 import colors from '../../config/colors';
 import MenuIon from '../MenuIcon';
@@ -14,22 +14,26 @@ function DrawerHeader({navigation}) {
     navigation.openDrawer();
   };
 
+  console.log(StatusBar);
+
   return (
-    <View style={styles.container}>
-      <MenuIon
-        name="arrow-left"
-        size={25}
-        color={colors.white}
-        onPress={onBackPress}
-      />
-      <HeaderText style={styles.headerText}>pdf reader title</HeaderText>
-      <MenuIon
-        name="table-of-contents"
-        size={25}
-        color={colors.white}
-        onPress={onTableOfContentsPress}
-      />
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <MenuIon
+          name="arrow-left"
+          size={25}
+          color={colors.white}
+          onPress={onBackPress}
+        />
+        <HeaderText style={styles.headerText}>pdf reader title</HeaderText>
+        <MenuIon
+          name="table-of-contents"
+          size={25}
+          color={colors.white}
+          onPress={onTableOfContentsPress}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
