@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {useSelector} from 'react-redux';
@@ -8,19 +8,20 @@ import {getPageNumber} from '../../services/slices/pdfSlice';
 
 function PDFReader({route, navigation}) {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
+  const pdfRef = useRef(null);
   const pageNumber = useSelector(getPageNumber);
-  console.log(pageNumber, 'pageNumber test');
 
   const toggleHeader = () => {
     setIsHeaderShown(isHeaderShown => !isHeaderShown);
   };
 
   useEffect(() => {
+    pdfRef.current.setPage(Number(pageNumber) + 1);
+  }, [pageNumber]);
+
+  useEffect(() => {
     navigation.setOptions({
       headerShown: isHeaderShown,
-      // headerRight: () => (
-      //   <MenuIon name="table-of-contents" size={25} color={colors.primary} />
-      // ),
     });
   }, [isHeaderShown]);
 
@@ -32,6 +33,7 @@ function PDFReader({route, navigation}) {
   return (
     <View>
       <Pdf
+        ref={pdfRef}
         source={source}
         onLoadComplete={(numberOfPages, filePath, style, tableOfContents) => {
           // console.log(tableOfContents);
