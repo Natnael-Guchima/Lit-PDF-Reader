@@ -9,6 +9,7 @@ import {getPageNumber} from '../../services/slices/pdfSlice';
 import colors from '../../config/colors';
 
 function PDFReader({route, navigation}) {
+  const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const pdfRef = useRef(null);
@@ -45,6 +46,7 @@ function PDFReader({route, navigation}) {
         onError={error => console.log(error)}
         onPageSingleTap={toggleHeader}
         style={styles.pdf}
+        onPageChanged={page => setPage(page)}
       />
       {isHeaderShown && (
         <View
@@ -57,7 +59,7 @@ function PDFReader({route, navigation}) {
             zIndex: 5,
           }}>
           <Slider
-            value={1}
+            value={page}
             onValueChange={value => pdfRef.current.setPage(Math.floor(value))}
             maximumValue={numberOfPages}
           />
