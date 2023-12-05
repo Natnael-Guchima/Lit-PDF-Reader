@@ -9,10 +9,11 @@ import {getPageNumber} from '../../services/slices/pdfSlice';
 import colors from '../../config/colors';
 
 function PDFReader({route, navigation}) {
+  const [numberOfPages, setNumberOfPages] = useState(0);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const pdfRef = useRef(null);
   const pageNumber = useSelector(getPageNumber);
-
+  console.log(numberOfPages, 'number of pages');
   const toggleHeader = () => {
     setIsHeaderShown(isHeaderShown => !isHeaderShown);
   };
@@ -39,6 +40,7 @@ function PDFReader({route, navigation}) {
         source={source}
         onLoadComplete={(numberOfPages, filePath, style, tableOfContents) => {
           // console.log(tableOfContents);
+          setNumberOfPages(numberOfPages);
         }}
         onError={error => console.log(error)}
         onPageSingleTap={toggleHeader}
@@ -56,7 +58,8 @@ function PDFReader({route, navigation}) {
           }}>
           <Slider
             value={1}
-            onValueChange={value => console.log(value, ' from page change')}
+            onValueChange={value => pdfRef.current.setPage(Math.floor(value))}
+            maximumValue={numberOfPages}
           />
         </View>
       )}
