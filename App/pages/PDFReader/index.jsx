@@ -42,6 +42,18 @@ function PDFReader({route, navigation}) {
         onPageSingleTap={toggleHeader}
         style={styles.pdf}
       />
+      {isHeaderShown && (
+        <View
+          style={{
+            height: 50,
+            width: '100%',
+            backgroundColor: 'black',
+            position: 'absolute',
+            bottom: 0,
+            zIndex: 5,
+          }}
+        />
+      )}
     </View>
   );
 }
