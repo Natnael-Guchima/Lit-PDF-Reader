@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 
 import Pdf from 'react-native-pdf';
 import {getPageNumber} from '../../services/slices/pdfSlice';
+import colors from '../../config/colors';
 
 function PDFReader({route, navigation}) {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
@@ -47,7 +48,7 @@ function PDFReader({route, navigation}) {
           style={{
             height: 50,
             width: '100%',
-            backgroundColor: 'black',
+            backgroundColor: colors.primary,
             position: 'absolute',
             bottom: 0,
             zIndex: 5,
