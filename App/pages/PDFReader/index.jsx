@@ -62,6 +62,8 @@ function PDFReader({route, navigation}) {
             value={page}
             onValueChange={value => pdfRef.current.setPage(Math.floor(value))}
             maximumValue={numberOfPages}
+            thumbTintColor={colors.white}
+            minimumTrackTintColor={colors.white}
           />
         </View>
       )}
