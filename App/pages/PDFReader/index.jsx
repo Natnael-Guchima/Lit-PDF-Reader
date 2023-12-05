@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {useSelector} from 'react-redux';
+import Slider from 'react-native-slider';
 
 import Pdf from 'react-native-pdf';
 import {getPageNumber} from '../../services/slices/pdfSlice';
@@ -52,8 +53,12 @@ function PDFReader({route, navigation}) {
             position: 'absolute',
             bottom: 0,
             zIndex: 5,
-          }}
-        />
+          }}>
+          <Slider
+            value={1}
+            onValueChange={value => console.log(value, ' from page change')}
+          />
+        </View>
       )}
     </View>
   );
