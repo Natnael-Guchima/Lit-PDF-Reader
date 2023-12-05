@@ -19,7 +19,7 @@ function TableOfContents({tableOfContents, navigation, ...props}) {
           key={`${pageIdx}${title}`}
           label={title}
           onPress={() => {
-            dispatch(updatePageNumber({pageNumber: pageIdx}));
+            dispatch(updatePageNumber(pageIdx));
             navigation.closeDrawer();
           }}
         />

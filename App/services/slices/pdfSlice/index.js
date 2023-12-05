@@ -6,8 +6,8 @@ const pdfSlice = createSlice({
     pageNumber: '1',
   },
   reducers: {
-    updatePageNumber: (state, payload) => {
-      state.pageNumber = payload.pageNumber;
+    updatePageNumber: (state, {payload: pageNumber}) => {
+      state.pageNumber = pageNumber;
     },
   },
 });
