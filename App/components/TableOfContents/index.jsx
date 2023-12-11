@@ -24,7 +24,6 @@ function TableOfContents({tableOfContents, navigation, ...props}) {
           }}
         />
       ))}
-      <DrawerItem label={'teest'} onPress={() => console.log('link pressed')} />
     </DrawerContentScrollView>
   );
 }

@@ -2,15 +2,18 @@ import React, {useState, useEffect, useRef} from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {useSelector} from 'react-redux';
+import Slider from 'react-native-slider';
 
 import Pdf from 'react-native-pdf';
 import {getPageNumber} from '../../services/slices/pdfSlice';
+import colors from '../../config/colors';
 
 function PDFReader({route, navigation}) {
+  const [page, setPage] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(0);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const pdfRef = useRef(null);
   const pageNumber = useSelector(getPageNumber);
-
   const toggleHeader = () => {
     setIsHeaderShown(isHeaderShown => !isHeaderShown);
   };
@@ -37,11 +40,32 @@ function PDFReader({route, navigation}) {
         source={source}
         onLoadComplete={(numberOfPages, filePath, style, tableOfContents) => {
           // console.log(tableOfContents);
+          setNumberOfPages(numberOfPages);
         }}
         onError={error => console.log(error)}
         onPageSingleTap={toggleHeader}
         style={styles.pdf}
+        onPageChanged={page => setPage(page)}
       />
+      {isHeaderShown && (
+        <View
+          style={{
+            height: 50,
+            width: '100%',
+            backgroundColor: colors.primary,
+            position: 'absolute',
+            bottom: 0,
+            zIndex: 5,
+          }}>
+          <Slider
+            value={page}
+            onValueChange={value => pdfRef.current.setPage(Math.floor(value))}
+            maximumValue={numberOfPages}
+            thumbTintColor={colors.white}
+            minimumTrackTintColor={colors.white}
+          />
+        </View>
+      )}
     </View>
   );
 }
