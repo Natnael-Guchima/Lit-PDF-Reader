@@ -14,7 +14,6 @@ function PDFReader({route, navigation}) {
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const pdfRef = useRef(null);
   const pageNumber = useSelector(getPageNumber);
-  console.log(numberOfPages, 'number of pages');
   const toggleHeader = () => {
     setIsHeaderShown(isHeaderShown => !isHeaderShown);
   };
