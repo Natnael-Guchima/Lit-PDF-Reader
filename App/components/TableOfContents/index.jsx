@@ -14,16 +14,18 @@ function TableOfContents({tableOfContents, navigation, ...props}) {
       <HeaderText style={{color: colors.black, marginLeft: 10}}>
         Table of Contents
       </HeaderText>
-      {tableOfContents.map(({title, pageIdx}) => (
-        <DrawerItem
-          key={`${pageIdx}${title}`}
-          label={title}
-          onPress={() => {
-            dispatch(updatePageNumber(pageIdx));
-            navigation.closeDrawer();
-          }}
-        />
-      ))}
+      {tableOfContents
+        ? tableOfContents.map(({title, pageIdx}) => (
+            <DrawerItem
+              key={`${pageIdx}${title}`}
+              label={title}
+              onPress={() => {
+                dispatch(updatePageNumber(pageIdx));
+                navigation.closeDrawer();
+              }}
+            />
+          ))
+        : null}
     </DrawerContentScrollView>
   );
 }
