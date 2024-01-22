@@ -27,7 +27,6 @@ function PDFReader({route, navigation}) {
       headerShown: isHeaderShown,
     });
   }, [isHeaderShown]);
-
   const uri = route.params
     ? route.params.uri
     : 'https://cdn.ttgtmedia.com/rms/pdf/pragmatic_programmer_ch4.pdf';
@@ -46,6 +45,7 @@ function PDFReader({route, navigation}) {
         onPageSingleTap={toggleHeader}
         style={styles.pdf}
         onPageChanged={page => setPage(page)}
+        trustAllCerts={false}
       />
       {isHeaderShown && (
         <View
