@@ -9,7 +9,7 @@ import {getPageNumber} from '../../services/slices/pdfSlice';
 import colors from '../../config/colors';
 
 function PDFReader({route, navigation}) {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
   const pdfRef = useRef(null);
