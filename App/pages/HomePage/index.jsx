@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Modal,
   View,
+  Text,
 } from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -51,9 +52,15 @@ function HomePage({navigation}) {
         visible={visible}
         onRequestClose={() => setVisible(!visible)}
         transparent={true}
-        animationType="slide">
+        animationType="fade">
         <View style={styles.centeredView}>
-          <View style={styles.modal} />
+          <View style={styles.modal}>
+            <TouchableOpacity style={styles.openButton}>
+              <View style={styles.btnContainer}>
+                <Text style={styles.btnText}>Open</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
     </Screen>
@@ -74,14 +81,32 @@ const styles = StyleSheet.create({
   },
   modal: {
     height: 200,
-    width: 200,
-    backgroundColor: 'blue',
+    width: '100%',
+    backgroundColor: 'white',
     justifyContent: 'center',
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
   },
   centeredView: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  openButton: {
+    backgroundColor: colors.primary,
+    height: 40,
+    borderRadius: 20,
+  },
+  btnContainer: {
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnText: {
+    color: colors.white,
+    fontWeight: 'bold',
   },
 });
 
