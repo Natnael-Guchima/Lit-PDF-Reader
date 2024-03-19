@@ -8,6 +8,7 @@ import {
   Modal,
   View,
   Text,
+  TextInput,
 } from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -18,6 +19,7 @@ import BookGrid from '../../layouts/BookGrid';
 import BookThumbnail from '../../components/BookThumbnail';
 import {CONST} from '../../config/CONST';
 import colors from '../../config/colors';
+import ModalButton from '../../components/ModalButton';
 
 const getURL = async navigation => {
   const URL = await Linking.getInitialURL();
@@ -55,11 +57,9 @@ function HomePage({navigation}) {
         animationType="fade">
         <View style={styles.centeredView}>
           <View style={styles.modal}>
-            <TouchableOpacity style={styles.openButton}>
-              <View style={styles.btnContainer}>
-                <Text style={styles.btnText}>Open</Text>
-              </View>
-            </TouchableOpacity>
+            <TextInput style={styles.input} placeholder="Enter URL" />
+            <ModalButton buttonBgColor={colors.primary} title={'Open'} />
+            <ModalButton buttonBgColor={'red'} title="Close" />
           </View>
         </View>
       </Modal>
@@ -93,20 +93,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  openButton: {
-    backgroundColor: colors.primary,
+  input: {
+    borderWidth: 1,
     height: 40,
     borderRadius: 20,
-  },
-  btnContainer: {
-    height: '100%',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnText: {
-    color: colors.white,
-    fontWeight: 'bold',
+    borderColor: '#adb5bd',
+    paddingLeft: 20,
   },
 });
 
