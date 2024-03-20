@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   AppState,
   Button,
@@ -31,6 +31,7 @@ const getURL = async navigation => {
 
 function HomePage({navigation}) {
   const [visible, setVisible] = useState(false);
+  const [URL, setURL] = useState('');
   const itemBottomMargin = 10;
 
   useEffect(() => {
@@ -65,6 +66,8 @@ function HomePage({navigation}) {
             <TextInput
               style={[styles.input, {marginBottom: itemBottomMargin}]}
               placeholder="Enter URL"
+              onChangeText={text => setURL(text)}
+              value={URL}
             />
             <ModalButton
               buttonBgColor={colors.primary}
