@@ -31,6 +31,7 @@ const getURL = async navigation => {
 
 function HomePage({navigation}) {
   const [visible, setVisible] = useState(false);
+  const itemBottomMargin = 10;
 
   useEffect(() => {
     Linking.addEventListener('url', event => {
@@ -57,9 +58,24 @@ function HomePage({navigation}) {
         animationType="fade">
         <View style={styles.centeredView}>
           <View style={styles.modal}>
-            <TextInput style={styles.input} placeholder="Enter URL" />
-            <ModalButton buttonBgColor={colors.primary} title={'Open'} />
-            <ModalButton buttonBgColor={'red'} title="Close" />
+            <Text
+              style={[styles.modalHeader, {marginBottom: itemBottomMargin}]}>
+              open book
+            </Text>
+            <TextInput
+              style={[styles.input, {marginBottom: itemBottomMargin}]}
+              placeholder="Enter URL"
+            />
+            <ModalButton
+              buttonBgColor={colors.primary}
+              title={'Open'}
+              style={{marginBottom: itemBottomMargin}}
+            />
+            <ModalButton
+              buttonBgColor={'red'}
+              title="Close"
+              style={{marginBottom: itemBottomMargin}}
+            />
           </View>
         </View>
       </Modal>
@@ -86,6 +102,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
+    paddingHorizontal: 20,
+    alignItems: 'center',
   },
   centeredView: {
     justifyContent: 'flex-end',
@@ -99,6 +117,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: '#adb5bd',
     paddingLeft: 20,
+    width: '100%',
+  },
+  modalHeader: {
+    textTransform: 'capitalize',
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: colors.black,
   },
 });
 
