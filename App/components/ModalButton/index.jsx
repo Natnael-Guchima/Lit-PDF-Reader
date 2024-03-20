@@ -3,10 +3,10 @@ import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 
 import colors from '../../config/colors';
 
-function ModalButton({title, buttonBgColor}) {
+function ModalButton({title, buttonBgColor, style}) {
   return (
     <TouchableOpacity
-      style={[styles.openButton, {backgroundColor: buttonBgColor}]}>
+      style={[styles.openButton, {backgroundColor: buttonBgColor}, style]}>
       <View style={styles.btnContainer}>
         <Text style={styles.btnText}>{title}</Text>
       </View>
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     height: 40,
     borderRadius: 20,
+    width: '100%',
   },
   btnContainer: {
     height: '100%',
