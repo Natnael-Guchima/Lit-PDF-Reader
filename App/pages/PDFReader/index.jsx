@@ -50,7 +50,7 @@ function PDFReader({route, navigation}) {
         }}
         onError={() => {
           dislayUnableToOpenPDFMessage();
-          navigation.navigate(CONST.ROUTES.HOME_PAGE, {error: true});
+          navigation.navigate(CONST.ROUTES.HOME_PAGE);
         }}
         onPageSingleTap={toggleHeader}
         style={styles.pdf}

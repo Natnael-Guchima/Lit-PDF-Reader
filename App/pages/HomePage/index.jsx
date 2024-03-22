@@ -32,12 +32,10 @@ const openBookByURL = (URL, navigation) => {
   navigation.navigate('PdfReader', {uri: URL});
 };
 
-function HomePage({navigation, route}) {
+function HomePage({navigation}) {
   const [visible, setVisible] = useState(false);
   const [URL, setURL] = useState('');
   const itemBottomMargin = 10;
-
-  console.log(route.params?.error, 'error opening pdf');
 
   useEffect(() => {
     Linking.addEventListener('url', event => {
