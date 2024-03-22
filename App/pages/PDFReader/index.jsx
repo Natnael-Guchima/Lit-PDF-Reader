@@ -3,11 +3,17 @@ import {View, StyleSheet} from 'react-native';
 
 import {useSelector} from 'react-redux';
 import Slider from 'react-native-slider';
+import Toast from 'react-native-simple-toast';
+import {useFocusEffect} from '@react-navigation/native';
 
 import Pdf from 'react-native-pdf';
 import {getPageNumber} from '../../services/slices/pdfSlice';
 import colors from '../../config/colors';
 import {CONST} from '../../config/CONST';
+
+const dislayUnableToOpenPDFMessage = () => {
+  Toast.show('Unable to open file!', Toast.SHORT);
+};
 
 function PDFReader({route, navigation}) {
   const [page, setPage] = useState(0);
@@ -42,9 +48,10 @@ function PDFReader({route, navigation}) {
           // console.log(tableOfContents);
           setNumberOfPages(numberOfPages);
         }}
-        onError={() =>
-          navigation.navigate(CONST.ROUTES.HOME_PAGE, {error: true})
-        }
+        onError={() => {
+          dislayUnableToOpenPDFMessage();
+          navigation.navigate(CONST.ROUTES.HOME_PAGE, {error: true});
+        }}
         onPageSingleTap={toggleHeader}
         style={styles.pdf}
         onPageChanged={page => setPage(page)}

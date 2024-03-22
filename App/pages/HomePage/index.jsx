@@ -29,10 +29,6 @@ const getURL = async navigation => {
 };
 
 const openBookByURL = (URL, navigation) => {
-  console.log('book opened', URL);
-  // navigate to 'pdfReaderRoute
-  // navigation.navigate(routeName, {uri, tableofContent})
-  // routeName = 'PdfReader', uri = URL
   navigation.navigate('PdfReader', {uri: URL});
 };
 
