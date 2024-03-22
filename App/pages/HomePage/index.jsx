@@ -29,7 +29,7 @@ const getURL = async navigation => {
 };
 
 const openBookByURL = (URL, navigation) => {
-  console.log('book opened', URL, navigation);
+  console.log('book opened', URL);
   // navigate to 'pdfReaderRoute
   // navigation.navigate(routeName, {uri, tableofContent})
   // routeName = 'PdfReader', uri = URL
@@ -80,12 +80,17 @@ function HomePage({navigation}) {
               buttonBgColor={colors.primary}
               title={'Open'}
               style={{marginBottom: itemBottomMargin}}
-              onPress={() => openBookByURL(URL, navigation)}
+              onPress={() => {
+                setVisible(!visible);
+                openBookByURL(URL, navigation);
+                setURL('');
+              }}
             />
             <ModalButton
               buttonBgColor={'red'}
               title="Close"
               style={{marginBottom: itemBottomMargin}}
+              onPress={() => setVisible(!visible)}
             />
           </View>
         </View>

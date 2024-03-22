@@ -41,7 +41,7 @@ function PDFReader({route, navigation}) {
           // console.log(tableOfContents);
           setNumberOfPages(numberOfPages);
         }}
-        onError={error => console.log(error)}
+        onError={() => navigation.goBack()}
         onPageSingleTap={toggleHeader}
         style={styles.pdf}
         onPageChanged={page => setPage(page)}
