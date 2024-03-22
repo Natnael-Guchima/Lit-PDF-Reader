@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Screen from '../../components/Screen';
 import BookGrid from '../../layouts/BookGrid';
@@ -27,6 +26,14 @@ const getURL = async navigation => {
     navigation.navigate(CONST.ROUTES.PDF_READER_PAGE, {
       uri: 'https://thepfengineerdotcom.files.wordpress.com/2016/05/notes-the-practicing-mind.pdf',
     });
+};
+
+const openBookByURL = (URL, navigation) => {
+  console.log('book opened', URL, navigation);
+  // navigate to 'pdfReaderRoute
+  // navigation.navigate(routeName, {uri, tableofContent})
+  // routeName = 'PdfReader', uri = URL
+  navigation.navigate('PdfReader', {uri: URL});
 };
 
 function HomePage({navigation}) {
@@ -73,6 +80,7 @@ function HomePage({navigation}) {
               buttonBgColor={colors.primary}
               title={'Open'}
               style={{marginBottom: itemBottomMargin}}
+              onPress={() => openBookByURL(URL, navigation)}
             />
             <ModalButton
               buttonBgColor={'red'}
