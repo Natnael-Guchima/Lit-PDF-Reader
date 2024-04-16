@@ -1,5 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import pdfSlice from './slices/pdfSlice';
+import recentlyOpenedBooks from './slices/recentlyOpenedBooks';
 
 // const middlewares = getDefaultMiddleware({
 //   // https://github.com/reduxjs/redux-toolkit/issues/415
@@ -22,7 +23,7 @@ if (__DEV__) {
 }
 
 export default store = configureStore({
-  reducer: {pdfSlice},
+  reducer: {pdfSlice, openedBooks: recentlyOpenedBooks},
   middleware: getDefaultMiddleware => {
     const result = getDefaultMiddleware().concat(middlewares);
 

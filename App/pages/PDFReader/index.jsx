@@ -5,17 +5,20 @@ import {useSelector} from 'react-redux';
 import Slider from 'react-native-slider';
 import Toast from 'react-native-simple-toast';
 import {useFocusEffect} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
 import Pdf from 'react-native-pdf';
 import {getPageNumber} from '../../services/slices/pdfSlice';
 import colors from '../../config/colors';
 import {CONST} from '../../config/CONST';
+import {addToOpenedBooksList} from '../../services/slices/recentlyOpenedBooks';
 
 const dislayUnableToOpenPDFMessage = () => {
   Toast.show('Unable to open file!', Toast.SHORT);
 };
 
 function PDFReader({route, navigation}) {
+  const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const [isHeaderShown, setIsHeaderShown] = useState(true);
@@ -46,6 +49,8 @@ function PDFReader({route, navigation}) {
         source={source}
         onLoadComplete={(numberOfPages, filePath, style, tableOfContents) => {
           // console.log(tableOfContents);
+          console.log(filePath, 'from opening pdf');
+          dispatch(addToOpenedBooksList(filePath));
           setNumberOfPages(numberOfPages);
         }}
         onError={() => {
