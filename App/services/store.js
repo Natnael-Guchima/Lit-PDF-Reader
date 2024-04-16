@@ -23,7 +23,7 @@ if (__DEV__) {
 }
 
 export default store = configureStore({
-  reducer: {pdfSlice, openedBooks: recentlyOpenedBooks},
+  reducer: {pdfSlice, recentlyOpenedBooks},
   middleware: getDefaultMiddleware => {
     const result = getDefaultMiddleware().concat(middlewares);
 

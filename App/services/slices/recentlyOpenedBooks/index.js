@@ -12,6 +12,7 @@ const recentlyOpenedBooks = createSlice({
     },
   },
 });
-
+export const getRecentlyOpenedBooks = state =>
+  state.recentlyOpenedBooks.openedBooks;
 export const {addToOpenedBooksList} = recentlyOpenedBooks.actions;
 export default recentlyOpenedBooks.reducer;

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useSelector} from 'react-redux';
 
 import Screen from '../../components/Screen';
 import BookGrid from '../../layouts/BookGrid';
@@ -19,6 +20,7 @@ import BookThumbnail from '../../components/BookThumbnail';
 import {CONST} from '../../config/CONST';
 import colors from '../../config/colors';
 import ModalButton from '../../components/ModalButton';
+import {getRecentlyOpenedBooks} from '../../services/slices/recentlyOpenedBooks';
 
 const getURL = async navigation => {
   const URL = await Linking.getInitialURL();
@@ -33,6 +35,12 @@ const openBookByURL = (URL, navigation) => {
 };
 
 function HomePage({navigation}) {
+  const recentlyOpenedBooks = useSelector(state =>
+    getRecentlyOpenedBooks(state),
+  ).map(value => ({
+    uri: value,
+  }));
+
   const [visible, setVisible] = useState(false);
   const [URL, setURL] = useState('');
   const itemBottomMargin = 10;
@@ -49,7 +57,11 @@ function HomePage({navigation}) {
 
   return (
     <Screen>
-      <BookGrid navigation={navigation} RenderItem={BookThumbnail} />
+      <BookGrid
+        navigation={navigation}
+        RenderItem={BookThumbnail}
+        recentlyOpenedBooks={recentlyOpenedBooks}
+      />
       <TouchableOpacity
         style={styles.floatingButton}
         onPress={() => setVisible(!visible)}>
