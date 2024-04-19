@@ -21,6 +21,7 @@ import {CONST} from '../../config/CONST';
 import colors from '../../config/colors';
 import ModalButton from '../../components/ModalButton';
 import {getRecentlyOpenedBooks} from '../../services/slices/recentlyOpenedBooks';
+import NoRecentBooks from '../NoRecentBooks';
 
 const getURL = async navigation => {
   const URL = await Linking.getInitialURL();
@@ -57,11 +58,15 @@ function HomePage({navigation}) {
 
   return (
     <Screen>
-      <BookGrid
-        navigation={navigation}
-        RenderItem={BookThumbnail}
-        recentlyOpenedBooks={recentlyOpenedBooks}
-      />
+      {recentlyOpenedBooks.length < 1 ? (
+        <NoRecentBooks />
+      ) : (
+        <BookGrid
+          navigation={navigation}
+          RenderItem={BookThumbnail}
+          recentlyOpenedBooks={recentlyOpenedBooks}
+        />
+      )}
       <TouchableOpacity
         style={styles.floatingButton}
         onPress={() => setVisible(!visible)}>
