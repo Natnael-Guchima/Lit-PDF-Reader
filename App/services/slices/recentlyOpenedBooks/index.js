@@ -7,11 +7,14 @@ const recentlyOpenedBooks = createSlice({
   },
   reducers: {
     addToOpenedBooksList: (state, action) => {
-      const bookExists = state.openedBooks.find(
-        bookURL => bookURL === action.payload,
-      );
-      if (!bookExists)
-        state.openedBooks = [...state.openedBooks, action.payload];
+      //   const bookExists = state.openedBooks.find(
+      //     bookURL => bookURL === action.payload,
+      //   );
+      //   if (!bookExists)
+      state.openedBooks = [
+        ...state.openedBooks.filter(bookURL => bookURL !== action.payload),
+        action.payload,
+      ];
     },
   },
 });
