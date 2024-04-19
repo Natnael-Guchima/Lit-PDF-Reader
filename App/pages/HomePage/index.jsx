@@ -38,9 +38,11 @@ const openBookByURL = (URL, navigation) => {
 function HomePage({navigation}) {
   const recentlyOpenedBooks = useSelector(state =>
     getRecentlyOpenedBooks(state),
-  ).map(value => ({
-    uri: value,
-  }));
+  )
+    .map(value => ({
+      uri: value,
+    }))
+    .reverse();
 
   const [visible, setVisible] = useState(false);
   const [URL, setURL] = useState('');
