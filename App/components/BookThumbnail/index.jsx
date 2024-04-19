@@ -8,16 +8,12 @@ const mockURI =
   'https://cdn.ttgtmedia.com/rms/pdf/pragmatic_programmer_ch4.pdf';
 
 function BookThumbnail({uri, navigation}) {
-  const [tableOfContents, setTableOfContents] = useState([]);
   const source = {uri: uri ? uri : mockURI, cache: true};
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate('PdfReader', {uri, tableOfContents})}>
+      onPress={() => navigation.navigate('PdfReader', {uri})}>
       <View style={styles.container}>
         <Pdf
-          onLoadComplete={(numberOfPages, path, size, tableOfConentes) => {
-            setTableOfContents(tableOfConentes);
-          }}
           source={source}
           style={styles.pdf}
           trustAllCerts={false}
