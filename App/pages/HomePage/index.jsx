@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   AppState,
   Button,
@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useSelector} from 'react-redux';
 
 import Screen from '../../components/Screen';
 import BookGrid from '../../layouts/BookGrid';
@@ -20,6 +20,8 @@ import BookThumbnail from '../../components/BookThumbnail';
 import {CONST} from '../../config/CONST';
 import colors from '../../config/colors';
 import ModalButton from '../../components/ModalButton';
+import {getRecentlyOpenedBooks} from '../../services/slices/recentlyOpenedBooks';
+import NoRecentBooks from '../NoRecentBooks';
 
 const getURL = async navigation => {
   const URL = await Linking.getInitialURL();
@@ -29,8 +31,19 @@ const getURL = async navigation => {
     });
 };
 
+const openBookByURL = (URL, navigation) => {
+  navigation.navigate('PdfReader', {uri: URL});
+};
+
 function HomePage({navigation}) {
+  const recentlyOpenedBooks = useSelector(state =>
+    getRecentlyOpenedBooks(state),
+  ).map(value => ({
+    uri: value,
+  }));
+
   const [visible, setVisible] = useState(false);
+  const [URL, setURL] = useState('');
   const itemBottomMargin = 10;
 
   useEffect(() => {
@@ -45,7 +58,15 @@ function HomePage({navigation}) {
 
   return (
     <Screen>
-      <BookGrid navigation={navigation} RenderItem={BookThumbnail} />
+      {recentlyOpenedBooks.length < 1 ? (
+        <NoRecentBooks />
+      ) : (
+        <BookGrid
+          navigation={navigation}
+          RenderItem={BookThumbnail}
+          recentlyOpenedBooks={recentlyOpenedBooks}
+        />
+      )}
       <TouchableOpacity
         style={styles.floatingButton}
         onPress={() => setVisible(!visible)}>
@@ -65,16 +86,24 @@ function HomePage({navigation}) {
             <TextInput
               style={[styles.input, {marginBottom: itemBottomMargin}]}
               placeholder="Enter URL"
+              onChangeText={text => setURL(text)}
+              value={URL}
             />
             <ModalButton
               buttonBgColor={colors.primary}
               title={'Open'}
               style={{marginBottom: itemBottomMargin}}
+              onPress={() => {
+                setVisible(!visible);
+                openBookByURL(URL, navigation);
+                setURL('');
+              }}
             />
             <ModalButton
               buttonBgColor={'red'}
               title="Close"
               style={{marginBottom: itemBottomMargin}}
+              onPress={() => setVisible(!visible)}
             />
           </View>
         </View>

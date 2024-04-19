@@ -3,10 +3,11 @@ import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 
 import colors from '../../config/colors';
 
-function ModalButton({title, buttonBgColor, style}) {
+function ModalButton({title, buttonBgColor, style, onPress}) {
   return (
     <TouchableOpacity
-      style={[styles.openButton, {backgroundColor: buttonBgColor}, style]}>
+      style={[styles.openButton, {backgroundColor: buttonBgColor}, style]}
+      onPress={onPress}>
       <View style={styles.btnContainer}>
         <Text style={styles.btnText}>{title}</Text>
       </View>
