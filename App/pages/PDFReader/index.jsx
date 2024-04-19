@@ -12,6 +12,7 @@ import {getPageNumber} from '../../services/slices/pdfSlice';
 import colors from '../../config/colors';
 import {CONST} from '../../config/CONST';
 import {addToOpenedBooksList} from '../../services/slices/recentlyOpenedBooks';
+import {updateTableOfContent} from '../../services/slices/pdfSlice';
 
 const dislayUnableToOpenPDFMessage = () => {
   Toast.show('Unable to open file!', Toast.SHORT);
@@ -51,6 +52,7 @@ function PDFReader({route, navigation}) {
           // console.log(tableOfContents);
           console.log(filePath, 'from opening pdf');
           dispatch(addToOpenedBooksList(filePath));
+          dispatch(updateTableOfContent(tableOfContents));
           setNumberOfPages(numberOfPages);
         }}
         onError={() => {
